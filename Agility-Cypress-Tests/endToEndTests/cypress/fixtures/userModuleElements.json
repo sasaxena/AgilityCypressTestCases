@@ -1,0 +1,62 @@
+{
+"userScreen":
+{
+"userGadget": "#conf-UserGadget",
+"userGroup": "#us-group-selector",
+"userName": "#us-usr-selector",
+"workspaceDropdown": "#ACMS-Workspace-Selector-dropdown",
+"workspaceSection": "#us-workspaces-tab-heading > a",
+"permissionSection": "#us-permissions-tab-heading > a",
+"userNameList": "#us-usr-selector > option",
+"userGroupList": "#us-group-selector > option",
+"userNameDropdown": ".ws-gadget-content > :nth-child(2) > label",
+"userGroupDropdown": ".ws-gadget-content > :nth-child(1) > label",
+"mainSection": "#us-main-tab-heading > a",
+"groupsSection": "#us-groups-tab-heading > a",
+"implicit":1000,
+"languageSection": "#us-languages-tab-heading > a",
+"attributeSection": "#us-attributes-tab-heading > a",
+"userSnapshotSection": "#us-snapshot-tab-heading > a",
+"allGadgets": "#conf-menu-buttons"
+
+},
+
+"mainScreen":
+{
+"loginNameLabel": ".us-left-col > :nth-child(1) > label",
+"userNameLabel": ".us-left-col > :nth-child(2) > label",
+ "email": ".us-left-col > :nth-child(3) > label",
+"role": ".us-left-col > :nth-child(4) > label",
+"uiLocale": ".full-width > label",
+"visualizer": "#us-visualizer-license",
+"superUser": "#us-workflow-superuser",
+"gadgetCancel": "#us-gadget-cancel-btn",
+"gadgetOk": "#us-gadget-ok-btn",
+"changePassword": "#us-change-password",
+"loginNameField": "#us-login-name",
+"userNameField": "#us-User-name",
+"roleField": "#us-role",
+"uiLocaleField": "#us-user-locale"
+
+
+
+
+},
+
+"permissionScreen":
+{
+"canEditWorkspaceCheckbox": "#us-permissions-canEditWorkspaces"
+},
+
+"workspaceScreen":
+{
+"workspaceSection": "#us-workspaces-tab-heading ",
+"defaultWorkspaceDropdown": "#us-default-workspace",
+"allWorkspaceCheckbox": "#us-workspaces-list>li>label",
+"applyButton": "#us-gadget-ok-btn",
+"cancelButton": "#us-gadget-cancel-btn",
+"workspaceCheckboxList": "#us-workspaces-list>li"
+
+}
+}
+

@@ -1,0 +1,64 @@
+Username,WorkspacesOption,Gadgets,UserGroup,UserName,WorkspaceCheckboxes,Dummy
+cypress10,Configuration Options,Users,Admin Group/Admin Group,CypressTestUser5,Admin,ajbjkascb
+cypress3,Create new workspace…,Users,,CypressTestUser3,Agrex Example,ajbjkascb
+,Edit current workspace…,Users,,,Configuration Options,ajbjkascb
+,,,,,CraigQA1,ajbjkascb
+,,,,,Workspace Editor Doc,ajbjkascb
+,,,,,Craig QA General,ajbjkascb
+,,,,,Datasheet Gadget,ajbjkascb
+,,,,,Default,ajbjkascb
+,,,,,Delete test,ajbjkascb
+,,,,,Error Space,ajbjkascb
+,,,,,Extended Search,ajbjkascb
+,,,,,adfag,ajbjkascb
+,,,,,File Uploader,ajbjkascb
+,,,,,afgabfzf,ajbjkascb
+,,,,,Image Librarian,ajbjkascb
+,,,,,Lightbox,ajbjkascb
+,,,,,No Edit Workspace,ajbjkascb
+,,,,,NoGlobalEdit,ajbjkascb
+,,,,,Object Workflow Bound,ajbjkascb
+,,,,,PDF Attrib None,ajbjkascb
+,,,,,PDF On Demand,ajbjkascb
+,,,,,Preview Tab,ajbjkascb
+,,,,,QA Asset,ajbjkascb
+,,,,,QA Asset Editable,ajbjkascb
+,,,,,QA Attribute Gadget,ajbjkascb
+,,,,,QA AutoLogin,ajbjkascb
+,,,,,QA Bound Group,ajbjkascb
+,,,,,QA Browser Breadcrumb Test,ajbjkascb
+,,,,,QA Browser Test,ajbjkascb
+,,,,,QA Clipboard Test,ajbjkascb
+,,,,,QA Datasheet Gadget,ajbjkascb
+,,,,,QA Datasheet Gadget 2,ajbjkascb
+,,,,,QA DatasheetWithFilters,ajbjkascb
+,,,,,QA Favourites Gadget,ajbjkascb
+,,,,,QA Grouped Attrs,ajbjkascb
+,,,,,QA Index Gadget,ajbjkascb
+,,,,,QA Instance Gadget,ajbjkascb
+,,,,,QA One Bound Template,ajbjkascb
+,,,,,QA PDF Gadget,ajbjkascb
+,,,,,QA PDF Gadget2,ajbjkascb
+,,,,,QA Price Gadget,ajbjkascb
+,,,,,QA Search Gadget,ajbjkascb
+,,,,,QA System Preferences,ajbjkascb
+,,,,,QA Template Gadget Test,ajbjkascb
+,,,,,QA Three Bound Templates,ajbjkascb
+,,,,,QA ToDo Gadget,ajbjkascb
+,,,,,QA Two Bound Templates,ajbjkascb
+,,,,,QA Pentaho,ajbjkascb
+,,,,,QA Relations,ajbjkascb
+,,,,,QA Relations,ajbjkascb
+,,,,,QA Relations With Browse,ajbjkascb
+,,,,,QA To Do Gadget,ajbjkascb
+,,,,,Resizeable Gadgets,ajbjkascb
+,,,,,Tabbed Templates,ajbjkascb
+,,,,,QA Template Gadget Test 2,ajbjkascb
+,,,,,Test Asset,ajbjkascb
+,,,,,Tooltip Workspace,ajbjkascb
+,,,,,Two Browser Gadgets,ajbjkascb
+,,,,,QA Working List Gadget,ajbjkascb
+,,,,,,ajbjkascb
+,,,,,WAVE-835 Test,ajbjkascb
+,,,,,WAVE-836 Test,ajbjkascb
+,,,,,WAVE-879 Test,ajbjkascb
