@@ -1,117 +1,142 @@
+const genericUtils = require('./genericUtils');
 /**
  * Utility function to select Gadget.
+ * @param {string} gadgetName - the name of the gadget to select to.
  **/
-
-const genericUtils = require('./genericUtils');
-
 function selectGadget(gadgetName) {
+
     // Check we are now in the required workspace.
     var userGadget = genericUtils.jsonFile('userModuleElements.json', 'userScreen', 'userGadget');
-    var implicit = genericUtils.jsonFile('userModuleElements.json', 'userScreen', 'implicit');
     var allGadgets = genericUtils.jsonFile('userModuleElements.json', 'userScreen', 'allGadgets');
-    cy.get(userGadget, { timeout: 30000 }).then(() => {
-        cy.wait(implicit);
-        cy.get(userGadget, { timeout: 30000 }).should('exist');
-        cy.get(allGadgets).find('button').contains(gadgetName).click();
+    var avg = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'avg');
+    var timeOut = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'min');
 
-       
-       
+    cy.get(userGadget, { timeout: avg }).then(() => {
+        
+        waitForObject(timeOut);
+        cy.get(userGadget, { timeout: avg }).should('exist');
+        cy.get(allGadgets).find('button').contains(gadgetName).click();
     });
 }
 
 /*
  * Utility function to select UserGroup
+ * @param {string} userGroupName - the name of the user group to select to.
  */
 function selectUserGroup(userGroupName) {
+
     // Check we are now in the User Gadget
     var userGroupDropdown = genericUtils.jsonFile('userModuleElements.json', 'userScreen', 'userGroup');
-    cy.get(userGroupDropdown, { timeout: 20000 }).select(userGroupName);
-
+    var avg = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'avg');
+    cy.get(userGroupDropdown, { timeout: avg }).select(userGroupName);
+        
+    
 }
-
 
 /*
  * Utility function to select UserName
+ *  @param {string} userName - the name of the user name to select to.
  */
 function selectUserName(userName) {
+
     // Check we are now in the User Gadget
     var userNameDropdown = genericUtils.jsonFile('userModuleElements.json', 'userScreen', 'userName');
-    cy.get(userNameDropdown, { timeout: 20000 }).select(userName);
-    
+    var avg = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'avg');
 
+    cy.get(userNameDropdown, { timeout: avg }).then((option) => {
+        const selectedOption = option.find(':selected').text();
+        if (selectedOption != userName) {
 
-}
-
-
-/*function _selectOptionFromDropdownList(dropDown, item) {
-    // Allow 30 seconds in case we've just logged in.
-    cy.get(dropDown, { timeout: 20000 }).within((selector) => {
-       if()
-       var value=cy.get(dropDown).select(item);
+            cy.get(userNameDropdown, { timeout: avg }).select(userName);
         }
     });
+    //cy.get(userNameDropdown, { timeout: avg }).select(userName, { timeout: avg });
 }
-*/
+
 /*
- *  function to select check workspace checkbox
+ *  function to check workspace checkbox
+ *   @param {string} checkBoxName - the name of the checkbox to check
  */
 function checkWorkspaceCheckbox(checkBoxName) {
+
     //check we are in the workspace section
+
     var workspaceCheckboxList = genericUtils.jsonFile('userModuleElements.json', 'workspaceScreen', 'workspaceCheckboxList');
+
     cy.get(workspaceCheckboxList).find('label').contains(checkBoxName).parent('li').within(() => {
         cy.get('input').check();
     });
-
 }
+
 /*
- *  function to select Uncheck workspace checkbox
+ *  function to Uncheck workspace checkbox
+ *  @param {string} checkBoxName - the name of the checkbox to Uncheck
  */
 function uncheckWorkspaceCheckbox(checkBoxName) {
 
     //check we are in the workspace section
-    var implicit = genericUtils.jsonFile('userModuleElements.json', 'userScreen', 'implicit');
 
     var workspaceCheckboxList = genericUtils.jsonFile('userModuleElements.json', 'workspaceScreen', 'workspaceCheckboxList');
-    cy.wait(implicit);
-    cy.get(workspaceCheckboxList, { timeout: 3000 }).find('label').contains(checkBoxName).parent('li').within(() => {
-        cy.get('input', { timeout: 20000 }).uncheck();
-    });
+    var min = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'min');
+    var avg = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'avg');
 
+    waitForObject(min);
+    cy.get(workspaceCheckboxList, { timeout: avg }).find('label').contains(checkBoxName).parent('li').within(() => {
+        cy.get('input', { timeout: avg }).uncheck();
+    });
 }
 
 /*
  *  function to validate checked workspace checkbox
+ *  @param {string} checkBoxName - the name of the checkbox to validate checked checkbox
  */
-function validateCheckedCheckbox(name) {
+function validateCheckedCheckbox(checkBoxName) {
 
     //check we are in the workspace section
+
     var workspaceCheckboxList = genericUtils.jsonFile('userModuleElements.json', 'workspaceScreen', 'workspaceCheckboxList');
-    cy.get(workspaceCheckboxList).find('label').contains(name).parent('li').within(() => {
-        cy.get('input', { timeout: 2000 }).should('checked');
+    var avg = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'avg');
+
+    cy.get(workspaceCheckboxList).find('label').contains(checkBoxName).parent('li').within(() => {
+        cy.get('input', { timeout: avg }).should('checked');
     });
 }
 
 /*
  *  function to validate Unchecked workspace checkbox
+ *   @param {string} checkBoxName - the name of the checkbox to validate unchecked checkbox
  */
-function validateUncheckCheckbox(name) {
+function validateUncheckCheckbox(checkBoxName) {
 
     //check we are in the workspace section
+
     var workspaceCheckboxList = genericUtils.jsonFile('userModuleElements.json', 'workspaceScreen', 'workspaceCheckboxList');
-    cy.get(workspaceCheckboxList).find('label').contains(name).parent('li').within(() => {
-        cy.get('input', { timeout: 2000 }).should('not.checked');
+    var avg = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'avg');
+
+    cy.get(workspaceCheckboxList).find('label').contains(checkBoxName).parent('li').within(() => {
+        cy.get('input', { timeout: avg }).should('not.checked');
 
     });
 }
 
-
+function waitForObject(timeOut) {
+    
+    cy.wait(timeOut);
+}
 
 /*
  *  function to validate available option in dropdown
+ *  @param {string} dropDown - passed dropdown list name
+ * @param {string} item - the item in the dropdown list to validate
  */
+ 
 function availableOptionInDropdown(dropDown, item) {
+
     // Allow 20 seconds to see all dropdown option.
-    cy.get(dropDown, { timeout: 20000 }).within((selector) => {
+
+    var avg = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'avg');
+
+    cy.get(dropDown, { timeout: avg }).within((selector) => {
         if (selector.text() !== item) {
             // Click to expand the dropDown
             selector.click();
@@ -145,11 +170,15 @@ function availableOptionInDropdown(dropDown, item) {
 
 /*
  *  function to validate Unavailable option in dropdown
+ *  @param {string} dropDown - passed dropdown list name
+ * @param {string} item - the item in the dropdown list to validate of Unavailability
  */
+
 function unAvailableOptionInDropdown(dropDown, item) {
+    var avg = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'avg');
 
     // Allow 20 seconds to see all dropdown option.
-    cy.get(dropDown, { timeout: 30000 }).within((selector) => {
+    cy.get(dropDown, { timeout: avg }).within((selector) => {
 
         if (selector.text() !== item) {
             // Click to expand the dropDown
@@ -173,8 +202,6 @@ function unAvailableOptionInDropdown(dropDown, item) {
                 } else {
 
                     throw new Error("Drpdown Option-" + item + "is visible");
-
-
                 }
             });
 
@@ -182,6 +209,44 @@ function unAvailableOptionInDropdown(dropDown, item) {
     });
 
 }
+
+
+/*
+ * Utility function to select role
+ *  @param {string} role - pass role name 
+ */
+function selectRole(role) {
+    // Check we are now in the User Gadget
+    var roleDropdown = genericUtils.jsonFile('userModuleElements.json', 'mainScreen', 'roleField');
+    var avg = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'avg');
+    cy.get(roleDropdown, { timeout: avg }).select(role);
+}
+
+/*
+ * Utility function to select role
+ * @param {string} uiLocale - pass UI locale value
+ */
+function selectUILocale(uiLocale) {
+    // Check we are now in the User Gadget
+    var uiLocaleDropdown = genericUtils.jsonFile('userModuleElements.json', 'mainScreen', 'uiLocaleField');
+    var avg = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'avg');
+    cy.get(uiLocaleDropdown, { timeout: avg }).select(uiLocale);
+}
+
+/*
+ * Utility function to edit the text of any field
+ *  @param {string} fieldObject - pass the object id
+ *   @param {string} text - pass the text to be entered
+ */
+function editText(fieldObject, text) {
+    // Check we are now in main section
+    cy.get(fieldObject).clear();
+    cy.get(fieldObject).type(text);
+}
+
+
+
+
 
 
 module.exports = {
@@ -193,6 +258,11 @@ module.exports = {
     checkWorkspaceCheckbox: checkWorkspaceCheckbox,
     validateUncheckCheckbox: validateUncheckCheckbox,
     validateCheckedCheckbox: validateCheckedCheckbox,
-    uncheckWorkspaceCheckbox: uncheckWorkspaceCheckbox
+    uncheckWorkspaceCheckbox: uncheckWorkspaceCheckbox,
+    waitForObject: waitForObject,
+    selectRole: selectRole,
+    selectUILocale: selectUILocale,
+    editText: editText
+
 };
 

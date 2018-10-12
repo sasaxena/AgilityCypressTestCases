@@ -1,5 +1,5 @@
 /**
- * Utility function to select the user group.
+ * Utility function to retrieve the data from csv
  * @param {string} filename - the name of the csv file to select to.
  * @param {string} row - row no.
  * @param {string} column - column no
@@ -19,10 +19,10 @@ function csvFile(filename, row, column) {
         
         
 /**
- * Utility function to select the user group.
+ * Utility function to select the data from json(object)
  * @param {string} filename - the name of the csv file to select to.
- * @param {string} obj - row no.
- * @param {string} key - column no.
+ * @param {string} obj - Screen Name
+ * @param {string} key - Key name to retrieve value
  */
 
 function jsonFile(filename, obj, key) {

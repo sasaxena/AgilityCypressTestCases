@@ -1,6 +1,8 @@
 const loginUtils = require('../../../utils/loginUtils');
 const changeDropdownUtils = require('../../../utils/changeDropdownUtils');
 const genericUtils = require('../../../utils/genericUtils');
+const userUtils = require('../../../utils/userUtils');
+
 
 describe('User actions with MainView section', function () {
     it('AMI:1859:4, Validations of all the fields in Main view sections', function () {
@@ -23,11 +25,13 @@ describe('User actions with MainView section', function () {
         var changePassword = genericUtils.jsonFile('userModuleElements.json', 'mainScreen', 'changePassword');
         var gadgetCancel = genericUtils.jsonFile('userModuleElements.json', 'mainScreen', 'gadgetCancel');
         var gadgetOk = genericUtils.jsonFile('userModuleElements.json', 'mainScreen', 'gadgetOk');
+        var timout = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'min');
+
 
         loginUtils.loginToAMI(userName);
         // Clicks on user gadgets
         cy.get(userGadget).click();
-        cy.wait(1000);
+        userUtils.waitForObject(timout);
         // Displaying values from the user group dropdown
         cy.get(userGroupList).then((li) => {
             const allValues = li.text();
@@ -35,7 +39,8 @@ describe('User actions with MainView section', function () {
         });
         // Selects 'User groups' in user group dropdown.
         changeDropdownUtils.userGroupSelection(userGroup);
-        cy.wait(1000);
+       
+        userUtils.waitForObject(timout);
         cy.get(mainSection).should('be.visible');
         cy.log('Main section is validated successfully');
 
@@ -71,7 +76,7 @@ describe('User actions with MainView section', function () {
         cy.log('apply button field is validated successfully');
 
         loginUtils.logoutFromAMI();
-        cy.wait(1000);
+        userUtils.waitForObject(timout);
 
     });
 
@@ -88,6 +93,8 @@ describe('User actions with MainView section', function () {
         var userNameField = genericUtils.jsonFile('userModuleElements.json', 'mainScreen', 'userNameField');
         var roleField = genericUtils.jsonFile('userModuleElements.json', 'mainScreen', 'roleField');
         var uiLocaleField = genericUtils.jsonFile('userModuleElements.json', 'mainScreen', 'uiLocaleField');
+        var timout = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'min');
+
 
         
         // Login to AMI.
@@ -95,7 +102,7 @@ describe('User actions with MainView section', function () {
         // Clicks on user gadgets
        
         cy.get(userGadget).click();
-        cy.wait(1000);
+        userUtils.waitForObject(timout);
         // Displaying values from the user group dropdown
         cy.get(userGroupList).then((li) => {
             const allValues = li.text();
@@ -107,7 +114,8 @@ describe('User actions with MainView section', function () {
         cy.log('Main section is validated successfully');
         // validations of all fields in main view
         cy.get(loginNameField).should('be.visible').click();
-       
+        cy.log('LoginName is validated successfully');
+
         cy.get(userNameField).should('be.visible');       
         cy.log('Username is validated successfully');
 

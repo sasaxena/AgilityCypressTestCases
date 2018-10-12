@@ -2,7 +2,6 @@ const loginUtils = require('../../../utils/loginUtils');
 const changeDropdownUtils = require('../../../utils/changeDropdownUtils');
 const userUtils = require('../../../utils/userUtils');
 const genericUtils = require('../../../utils/genericUtils');
-//const configOptionsUtils = require('../../../utils/configOptionsUtils');
 
 describe('Permission View functionality', function () {
     it('AMI:1928:73 Can Edit Workspace Checkbox is present', function () {
@@ -16,6 +15,8 @@ describe('Permission View functionality', function () {
         //rerieving elements 
         var permissionHeaderElement = genericUtils.jsonFile('userModuleElements.json', 'userScreen', 'permissionSection');
         var canEditWorkspaceElement = genericUtils.jsonFile('userModuleElements.json', 'permissionScreen', 'canEditWorkspaceCheckbox');
+        var timeOut = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'min');
+        var avg = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'avg');
 
         // Login to AMI.
         loginUtils.loginToAMI(userName);
@@ -31,15 +32,15 @@ describe('Permission View functionality', function () {
         
         //selecting Admin user group
         userUtils.selectUserGroup(userGroupName);
-        cy.log('User selected the-' + userGroupName + ' option in Usergroup');
+        cy.log('User selected the userGroupName in Usergroup dropdown');
 
         //selecting username
         userUtils.selectUserName(userName2);
-        cy.log('User selected the' + userName2 + 'option in Username');
+        cy.log('User selected the userName in Username dropdown');
 
         //Exapnding the permission header
-        cy.wait(1000);
-        cy.get(permissionHeaderElement, { timeout: 2000 }).click();
+        userUtils.waitForObject(timeOut);
+        cy.get(permissionHeaderElement, { timeout: avg }).click();
         cy.log('Expand the permission header section');
 
         //Checking Can edit workspace checkbox is visible in permission section
@@ -59,12 +60,11 @@ describe('Permission View functionality', function () {
         var gadgetName = genericUtils.csvFile('userData.csv', 1, 2);
         var userGroupName = genericUtils.csvFile('userData.csv', 1, 3);
         var userName2 = genericUtils.csvFile('userData.csv', 1, 4);
-        var workspaceOption2 = genericUtils.csvFile('userData.csv', 2, 1);
-
-        cy.log(workspaceOption2);
+        
         var permissionHeaderElement = genericUtils.jsonFile('userModuleElements.json', 'userScreen', 'permissionSection');
         var canEditWorkspaceElement = genericUtils.jsonFile('userModuleElements.json', 'permissionScreen', 'canEditWorkspaceCheckbox');
         var workspaceDropdownElement = genericUtils.jsonFile('userModuleElements.json', 'userScreen', 'workspaceDropdown');
+        var timeOut = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'min');
 
         // Login to AMI.
         loginUtils.loginToAMI(userName);
@@ -72,7 +72,6 @@ describe('Permission View functionality', function () {
 
         //selcting the Configuration Option in Workspace Dropdown
         changeDropdownUtils.changeWorkspace(workspaceOption);
-        //changeDropdownUtils.changeWorkspace(workspaceOption);
         cy.log('User Successfully navigated to Configuration Options');
 
         //Clicking on user Gadget 
@@ -81,14 +80,16 @@ describe('Permission View functionality', function () {
 
         //selecting Admin user group
         userUtils.selectUserGroup(userGroupName);
-        cy.log('User selected the-' + userGroupName + ' option in Usergroup');
+        cy.log('User selected the userGroupName in Usergroup dropdown');
 
         //selecting username
         userUtils.selectUserName(userName2);
+        cy.log('User selected the userName in Username dropdown');
 
         //Exapnding the permission header
-        cy.wait(1000);
+        userUtils.waitForObject(timeOut);
         cy.get(permissionHeaderElement).click();
+        cy.log('user successfully clicked on permission header');
 
         //Checking Can edit workspace checkbox in permission section
         cy.get(canEditWorkspaceElement).check().should('be.checked');
@@ -105,12 +106,12 @@ describe('Permission View functionality', function () {
         var gadgetName = genericUtils.csvFile('userData.csv', 1, 2);
         var userGroupName = genericUtils.csvFile('userData.csv', 1, 3);
         var userName2 = genericUtils.csvFile('userData.csv', 1, 4);
-        //var workspaceOption2 = genericUtils.csvFile('UserData.csv', 2, 1);
-        //var workspaceOption3 = genericUtils.csvFile('UserData.csv', 3, 1);
-
+        
         var permissionHeaderElement = genericUtils.jsonFile('userModuleElements.json', 'userScreen', 'permissionSection');
         var canEditWorkspaceElement = genericUtils.jsonFile('userModuleElements.json', 'permissionScreen', 'canEditWorkspaceCheckbox');
         var workspaceDropdownElement = genericUtils.jsonFile('userModuleElements.json', 'userScreen', 'workspaceDropdown');
+        var timeOut = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'min');
+        var avg = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'avg');
 
         // Login to AMI.
         loginUtils.loginToAMI(userName);
@@ -126,17 +127,16 @@ describe('Permission View functionality', function () {
 
         //selecting Admin user group
         userUtils.selectUserGroup(userGroupName);
-        cy.log('User selected the-' + userGroupName + ' option in Usergroup');
+        cy.log('User selected the userGroupName in Usergroup dropdown');
 
         //selecting username
         userUtils.selectUserName(userName2);
-        cy.log('User selected the-' + userName2 + ' option in Username');
-        //cy.wait(1000);
+        cy.log('User selected the userName in Username dropdown');
 
-        cy.wait(1000);
+        userUtils.waitForObject(timeOut);
         //Exapnding the permission header
-        cy.get(permissionHeaderElement, { timeout: 2000 }).click();
-       
+        cy.get(permissionHeaderElement, { timeout: avg }).click();
+        cy.log('user successfully clicked on permission header');
         cy.get(canEditWorkspaceElement).should('be.visible');
 
         //Uncheck Can edit workspace checkbox in permission section
@@ -152,6 +152,7 @@ describe('Permission View functionality', function () {
         //Checking Create new workspace...and Edit current workspace... option is not visible in workspace dropdown
         userUtils.unAvailableOptionInDropdown(workspaceDropdownElement, 'Create new workspace...');
         userUtils.unAvailableOptionInDropdown(workspaceDropdownElement, 'Edit current workspace...');
+        cy.log('successfully validated Create new workspace and Edit current workspace is not visible');
 
         //logout from AMI application
         loginUtils.logoutFromAMI();

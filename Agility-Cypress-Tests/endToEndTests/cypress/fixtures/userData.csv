@@ -1,64 +1,64 @@
-Username,WorkspacesOption,Gadgets,UserGroup,UserName,WorkspaceCheckboxes,Dummy
-cypress10,Configuration Options,Users,Admin Group/Admin Group,CypressTestUser5,Admin,ajbjkascb
-cypress3,Create new workspace…,Users,,CypressTestUser3,Agrex Example,ajbjkascb
-,Edit current workspace…,Users,,,Configuration Options,ajbjkascb
-,,,,,CraigQA1,ajbjkascb
-,,,,,Workspace Editor Doc,ajbjkascb
-,,,,,Craig QA General,ajbjkascb
-,,,,,Datasheet Gadget,ajbjkascb
-,,,,,Default,ajbjkascb
-,,,,,Delete test,ajbjkascb
-,,,,,Error Space,ajbjkascb
-,,,,,Extended Search,ajbjkascb
-,,,,,adfag,ajbjkascb
-,,,,,File Uploader,ajbjkascb
-,,,,,afgabfzf,ajbjkascb
-,,,,,Image Librarian,ajbjkascb
-,,,,,Lightbox,ajbjkascb
-,,,,,No Edit Workspace,ajbjkascb
-,,,,,NoGlobalEdit,ajbjkascb
-,,,,,Object Workflow Bound,ajbjkascb
-,,,,,PDF Attrib None,ajbjkascb
-,,,,,PDF On Demand,ajbjkascb
-,,,,,Preview Tab,ajbjkascb
-,,,,,QA Asset,ajbjkascb
-,,,,,QA Asset Editable,ajbjkascb
-,,,,,QA Attribute Gadget,ajbjkascb
-,,,,,QA AutoLogin,ajbjkascb
-,,,,,QA Bound Group,ajbjkascb
-,,,,,QA Browser Breadcrumb Test,ajbjkascb
-,,,,,QA Browser Test,ajbjkascb
-,,,,,QA Clipboard Test,ajbjkascb
-,,,,,QA Datasheet Gadget,ajbjkascb
-,,,,,QA Datasheet Gadget 2,ajbjkascb
-,,,,,QA DatasheetWithFilters,ajbjkascb
-,,,,,QA Favourites Gadget,ajbjkascb
-,,,,,QA Grouped Attrs,ajbjkascb
-,,,,,QA Index Gadget,ajbjkascb
-,,,,,QA Instance Gadget,ajbjkascb
-,,,,,QA One Bound Template,ajbjkascb
-,,,,,QA PDF Gadget,ajbjkascb
-,,,,,QA PDF Gadget2,ajbjkascb
-,,,,,QA Price Gadget,ajbjkascb
-,,,,,QA Search Gadget,ajbjkascb
-,,,,,QA System Preferences,ajbjkascb
-,,,,,QA Template Gadget Test,ajbjkascb
-,,,,,QA Three Bound Templates,ajbjkascb
-,,,,,QA ToDo Gadget,ajbjkascb
-,,,,,QA Two Bound Templates,ajbjkascb
-,,,,,QA Pentaho,ajbjkascb
-,,,,,QA Relations,ajbjkascb
-,,,,,QA Relations,ajbjkascb
-,,,,,QA Relations With Browse,ajbjkascb
-,,,,,QA To Do Gadget,ajbjkascb
-,,,,,Resizeable Gadgets,ajbjkascb
-,,,,,Tabbed Templates,ajbjkascb
-,,,,,QA Template Gadget Test 2,ajbjkascb
-,,,,,Test Asset,ajbjkascb
-,,,,,Tooltip Workspace,ajbjkascb
-,,,,,Two Browser Gadgets,ajbjkascb
-,,,,,QA Working List Gadget,ajbjkascb
-,,,,,,ajbjkascb
-,,,,,WAVE-835 Test,ajbjkascb
-,,,,,WAVE-836 Test,ajbjkascb
-,,,,,WAVE-879 Test,ajbjkascb
+Username,WorkspacesOption,Gadgets,UserGroup,UserName,WorkspaceCheckboxes,Email_Id,password,Role,UI Locale,Language,sortOptions,Dummy
+cypress2,Configuration Options,Users,Admin Group/Admin Group,CypressTestUser2,Admin,1@2.FU,qcteam,Administrator,Bahasa Indonesia (Indonesia),English,,ajbjkascb
+cypress3,Create new workspace…,Users,Admin,CypressTestUser3,Agrex Example,abc@gmail.com,qc team,Standard,English (United Kingdom),,,ajbjkascb
+cypress13,Edit current workspace…,Users,Cypress UsersAdmin,admin_001,Configuration Options,abcd,,Viewer,,,,ajbjkascb
+,,,,admin2,CraigQA1,ad@gmail.com,,Supplier,,,,ajbjkascb
+,,,,Opal,Workspace Editor Doc,cypress15@gmail.com,,,,,,ajbjkascb
+,,,,CypressTestUser13,Craig QA General,cypress16@gmail.com,,,,,,ajbjkascb
+cypress14,,,,CypressTestUser14,Datasheet Gadget,,,,,,,ajbjkascb
+cypress15,,,,CypressTestUser15,Default,,,,,,,ajbjkascb
+cypress 16,,,,Cypress Test User16,Delete test,,,,,,,ajbjkascb
+,,,,,Error Space,,,,,,,ajbjkascb
+,,,,,Extended Search,,,,,,,ajbjkascb
+,,,,,adfag,,,,,,,ajbjkascb
+,,,,,File Uploader,,,,,,,ajbjkascb
+,,,,,afgabfzf,,,,,,,ajbjkascb
+,,,,,Image Librarian,,,,,,,ajbjkascb
+,,,,,Lightbox,,,,,,,ajbjkascb
+,,,,,No Edit Workspace,,,,,,,ajbjkascb
+,,,,,NoGlobalEdit,,,,,,,ajbjkascb
+,,,,,Object Workflow Bound,,,,,,,ajbjkascb
+,,,,,PDF Attrib None,,,,,,,ajbjkascb
+,,,,,PDF On Demand,,,,,,,ajbjkascb
+,,,,,Preview Tab,,,,,,,ajbjkascb
+,,,,,QA Asset,,,,,,,ajbjkascb
+,,,,,QA Asset Editable,,,,,,,ajbjkascb
+,,,,,QA Attribute Gadget,,,,,,,ajbjkascb
+,,,,,QA AutoLogin,,,,,,,ajbjkascb
+,,,,,QA Bound Group,,,,,,,ajbjkascb
+,,,,,QA Browser Breadcrumb Test,,,,,,,ajbjkascb
+,,,,,QA Browser Test,,,,,,,ajbjkascb
+,,,,,QA Clipboard Test,,,,,,,ajbjkascb
+,,,,,QA Datasheet Gadget,,,,,,,ajbjkascb
+,,,,,QA Datasheet Gadget 2,,,,,,,ajbjkascb
+,,,,,QA DatasheetWithFilters,,,,,,,ajbjkascb
+,,,,,QA Favourites Gadget,,,,,,,ajbjkascb
+,,,,,QA Grouped Attrs,,,,,,,ajbjkascb
+,,,,,QA Index Gadget,,,,,,,ajbjkascb
+,,,,,QA Instance Gadget,,,,,,,ajbjkascb
+,,,,,QA One Bound Template,,,,,,,ajbjkascb
+,,,,,QA PDF Gadget,,,,,,,ajbjkascb
+,,,,,QA PDF Gadget2,,,,,,,ajbjkascb
+,,,,,QA Price Gadget,,,,,,,ajbjkascb
+,,,,,QA Search Gadget,,,,,,,ajbjkascb
+,,,,,QA System Preferences,,,,,,,ajbjkascb
+,,,,,QA Template Gadget Test,,,,,,,ajbjkascb
+,,,,,QA Three Bound Templates,,,,,,,ajbjkascb
+,,,,,QA ToDo Gadget,,,,,,,ajbjkascb
+,,,,,QA Two Bound Templates,,,,,,,ajbjkascb
+,,,,,QA Pentaho,,,,,,,ajbjkascb
+,,,,,QA Relations,,,,,,,ajbjkascb
+,,,,,QA Relations,,,,,,,ajbjkascb
+,,,,,QA Relations With Browse,,,,,,,ajbjkascb
+,,,,,QA To Do Gadget,,,,,,,ajbjkascb
+,,,,,Resizeable Gadgets,,,,,,,ajbjkascb
+,,,,,Tabbed Templates,,,,,,,ajbjkascb
+,,,,,QA Template Gadget Test 2,,,,,,,ajbjkascb
+,,,,,Test Asset,,,,,,,ajbjkascb
+,,,,,Tooltip Workspace,,,,,,,ajbjkascb
+,,,,,Two Browser Gadgets,,,,,,,ajbjkascb
+,,,,,QA Working List Gadget,,,,,,,ajbjkascb
+,,,,,,,,,,,,ajbjkascb
+,,,,,WAVE-835 Test,,,,,,,ajbjkascb
+,,,,,WAVE-836 Test,,,,,,,ajbjkascb
+,,,,,WAVE-879 Test,,,,,,,ajbjkascb
