@@ -6,6 +6,59 @@ const genericUtils = require('../../../utils/genericUtils');
 
 describe('Workspaces View functionality', function () {
 
+    it('AMI:1893:38 The workspaces section should list all the workspaces with a checkbox next to each along with Default workspace drop-down.', function () {
+
+        //Retrieving test data
+        var userName = genericUtils.csvFile('userData.csv', 1, 0);
+        var workspaceOption = genericUtils.csvFile('userData.csv', 1, 1);
+        var gadgetName = genericUtils.csvFile('userData.csv', 1, 2);
+        var userGroupName = genericUtils.csvFile('userData.csv', 1, 3);
+        var userName2 = genericUtils.csvFile('userData.csv', 1, 4);
+       
+        //rerieving elements 
+        var workspaceHeaderElement = genericUtils.jsonFile('userModuleElements.json', 'workspaceScreen', 'workspaceSection');
+        var workspaceCheckboxList = genericUtils.jsonFile('userModuleElements.json', 'workspaceScreen', 'workspaceCheckboxList');
+
+        var timeOut = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'min');
+
+        // Login to AMI.
+        loginUtils.loginToAMI(userName);
+        cy.log('User Successfully logged in application');
+
+        //selcting the Configuration Option in Workspace Dropdown
+        changeDropdownUtils.changeWorkspace(workspaceOption);
+        cy.log('User Successfully navigated to Configuration Options');
+
+        //Clicking on user Gadget
+        userUtils.selectGadget(gadgetName);
+        cy.log('User clicked on User gadget');
+
+        //selecting Admin user group
+        userUtils.selectUserGroup(userGroupName);
+        cy.log('User selected the userGroup in Usergroup dropdown');
+
+        //selecting UserName
+        userUtils.selectUserName(userName2);
+        cy.log('User selected the userName in Username dropdown');
+        userUtils.waitForObject(timeOut);
+
+        //Expanding workspace section
+        cy.get(workspaceHeaderElement, { timeout: timeOut }).click();
+        cy.log('User successfully Expanded Workspace section');
+
+       
+        for (var i = 1; i <= 11; i++) {
+            cy.get(workspaceCheckboxList).eq(i).then(($btn) => {
+                var values = $btn.text();
+                cy.log(values);
+
+            });
+        }
+
+        //Log out from AMI application
+        loginUtils.logoutFromAMI();
+    });
+
     it('AMI:1894:39 Workspaces which are checked should come up in Default workspace drop-down, Also Apply and Cancel button should get enabled.', function () {
 
         //Retrieving test data
@@ -18,6 +71,8 @@ describe('Workspaces View functionality', function () {
 
         //rerieving elements 
         var workspaceHeaderElement = genericUtils.jsonFile('userModuleElements.json', 'workspaceScreen', 'workspaceSection');
+        var workspaceCheckboxList = genericUtils.jsonFile('userModuleElements.json', 'workspaceScreen', 'workspaceCheckboxList');
+
         var defaultWorkspaceDropdown = genericUtils.jsonFile('userModuleElements.json', 'workspaceScreen', 'defaultWorkspaceDropdown');
         var applyButton = genericUtils.jsonFile('userModuleElements.json', 'workspaceScreen', 'applyButton');
         var cancelButton = genericUtils.jsonFile('userModuleElements.json', 'workspaceScreen', 'cancelButton');
@@ -49,7 +104,7 @@ describe('Workspaces View functionality', function () {
         cy.log('User successfully Expanded Workspace section');
 
         //validating workspace checkbox is unchecked
-        userUtils.validateUncheckCheckbox(workspaceOption2);
+        userUtils.validateUncheckCheckbox(workspaceCheckboxList, workspaceOption2);
 
         //checking workspace checkbox
         userUtils.checkWorkspaceCheckbox(workspaceOption2);
@@ -82,6 +137,8 @@ describe('Workspaces View functionality', function () {
 
         //rerieving elements
         var workspaceHeaderElement = genericUtils.jsonFile('userModuleElements.json', 'userScreen', 'workspaceSection');
+        var workspaceCheckboxList = genericUtils.jsonFile('userModuleElements.json', 'workspaceScreen', 'workspaceCheckboxList');
+
         var defaultWorkspaceDropdown = genericUtils.jsonFile('userModuleElements.json', 'workspaceScreen', 'defaultWorkspaceDropdown');
         var cancelButton = genericUtils.jsonFile('userModuleElements.json', 'workspaceScreen', 'cancelButton');
         var timeOut = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'min');
@@ -112,7 +169,7 @@ describe('Workspaces View functionality', function () {
         cy.log('User successfully Expanded Workspace section');
 
         //validating checkbx is unchecked
-        userUtils.validateUncheckCheckbox(workspaceOption2);
+        userUtils.validateUncheckCheckbox(workspaceCheckboxList, workspaceOption2);
 
         //checking workspace checkbox and clicking ok cancel button
         userUtils.checkWorkspaceCheckbox(workspaceOption2);
@@ -141,7 +198,7 @@ describe('Workspaces View functionality', function () {
         cy.log('Click on workspace header');
 
         //validaing checkbox is unchecked
-        userUtils.validateUncheckCheckbox('Craig QA General');
+        userUtils.validateUncheckCheckbox(workspaceCheckboxList, 'Craig QA General');
         cy.log('successfully validated -Craig QA General checkbox is unchecked');
 
         //Checking checked worrkspace option is present in default workspace dropdown
@@ -165,6 +222,8 @@ describe('Workspaces View functionality', function () {
 
         //rerieving elements
         var workspaceHeaderElement = genericUtils.jsonFile('userModuleElements.json', 'userScreen', 'workspaceSection');
+        var workspaceCheckboxList = genericUtils.jsonFile('userModuleElements.json', 'workspaceScreen', 'workspaceCheckboxList');
+
         var defaultWorkspaceDropdown = genericUtils.jsonFile('userModuleElements.json', 'workspaceScreen', 'defaultWorkspaceDropdown');
         var applyButton = genericUtils.jsonFile('userModuleElements.json', 'workspaceScreen', 'applyButton');
         var timeOut = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'min');
@@ -195,7 +254,7 @@ describe('Workspaces View functionality', function () {
         cy.log('succssfully clicked on workspace header');
 
         //Checking workspace checkbox
-        userUtils.validateUncheckCheckbox(workspaceOption2);
+        userUtils.validateUncheckCheckbox(workspaceCheckboxList, workspaceOption2);
         userUtils.checkWorkspaceCheckbox(workspaceOption2);
 
 
@@ -222,7 +281,7 @@ describe('Workspaces View functionality', function () {
 
         //Checking checked worrkspace option is present in default workspace dropdown
         cy.get(defaultWorkspaceDropdown).should('contain', 'Datasheet Gadget');
-        userUtils.validateCheckedCheckbox(workspaceOption2);
+        userUtils.validateCheckedCheckbox(workspaceCheckboxList, workspaceOption2);
         cy.log('validated checked worrkspace option is present in default workspace');
 
         //Making the previous state
@@ -250,6 +309,7 @@ describe('Workspaces View functionality', function () {
 
         //rerieving elements 
         var workspaceHeaderElement = genericUtils.jsonFile('userModuleElements.json', 'userScreen', 'workspaceSection');
+     
         var defaultWorkspaceDropdown = genericUtils.jsonFile('userModuleElements.json', 'workspaceScreen', 'defaultWorkspaceDropdown');
         var applyButton = genericUtils.jsonFile('userModuleElements.json', 'workspaceScreen', 'applyButton');
         var timeOut = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'min');

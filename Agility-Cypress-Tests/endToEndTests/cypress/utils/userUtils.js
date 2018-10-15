@@ -50,7 +50,37 @@ function selectUserName(userName) {
             cy.get(userNameDropdown, { timeout: avg }).select(userName);
         }
     });
-    //cy.get(userNameDropdown, { timeout: avg }).select(userName, { timeout: avg });
+
+}
+/*
+ *  function to check checkbox in list
+ *  @param {string} checkboxListObject - passed checkbox list object
+ * @param {string} checkBoxName - name of the checkbox to check in list
+ */
+function _checkCheckboxes(checkboxListObject, checkBoxName) {
+
+    var avg = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'avg');
+
+    cy.get(checkboxListObject, { timeout: avg }).find('label').contains(checkBoxName).parent('li').within(() => {
+        cy.get('input').check();
+    });
+}
+
+/*
+ *  function to uncheck checkbox in list
+ *  @param {string} checkboxListObject - passed checkbox list object
+ * @param {string} checkBoxName - name of the checkbox to uncheck in list
+ */
+
+function _uncheckCheckboxes(checkboxListObject, checkBoxName) {
+
+    var min = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'min');
+    var avg = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'avg');
+
+    waitForObject(min);
+    cy.get(checkboxListObject, { timeout: avg }).find('label').contains(checkBoxName).parent('li').within(() => {
+        cy.get('input', { timeout: avg }).uncheck();
+    });
 }
 
 /*
@@ -62,10 +92,9 @@ function checkWorkspaceCheckbox(checkBoxName) {
     //check we are in the workspace section
 
     var workspaceCheckboxList = genericUtils.jsonFile('userModuleElements.json', 'workspaceScreen', 'workspaceCheckboxList');
-
-    cy.get(workspaceCheckboxList).find('label').contains(checkBoxName).parent('li').within(() => {
-        cy.get('input').check();
-    });
+    _checkCheckboxes(workspaceCheckboxList, checkBoxName);
+    
+   
 }
 
 /*
@@ -77,43 +106,36 @@ function uncheckWorkspaceCheckbox(checkBoxName) {
     //check we are in the workspace section
 
     var workspaceCheckboxList = genericUtils.jsonFile('userModuleElements.json', 'workspaceScreen', 'workspaceCheckboxList');
-    var min = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'min');
-    var avg = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'avg');
-
-    waitForObject(min);
-    cy.get(workspaceCheckboxList, { timeout: avg }).find('label').contains(checkBoxName).parent('li').within(() => {
-        cy.get('input', { timeout: avg }).uncheck();
-    });
+    _uncheckCheckboxes(workspaceCheckboxList, checkBoxName);
+   
 }
 
 /*
- *  function to validate checked workspace checkbox
+ *  function to validate checked checkbox
  *  @param {string} checkBoxName - the name of the checkbox to validate checked checkbox
  */
-function validateCheckedCheckbox(checkBoxName) {
+function validateCheckedCheckbox(checkboxListObject, checkBoxName) {
 
-    //check we are in the workspace section
+    //check we are in the workspace/Language section
 
-    var workspaceCheckboxList = genericUtils.jsonFile('userModuleElements.json', 'workspaceScreen', 'workspaceCheckboxList');
     var avg = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'avg');
 
-    cy.get(workspaceCheckboxList).find('label').contains(checkBoxName).parent('li').within(() => {
+    cy.get(checkboxListObject).find('label').contains(checkBoxName).parent('li').within(() => {
         cy.get('input', { timeout: avg }).should('checked');
     });
 }
 
 /*
- *  function to validate Unchecked workspace checkbox
+ *  function to validate Unchecked checkbox
  *   @param {string} checkBoxName - the name of the checkbox to validate unchecked checkbox
  */
-function validateUncheckCheckbox(checkBoxName) {
+function validateUncheckCheckbox(checkboxListObject, checkBoxName) {
 
-    //check we are in the workspace section
+    //check we are in the workspace/Language section
 
-    var workspaceCheckboxList = genericUtils.jsonFile('userModuleElements.json', 'workspaceScreen', 'workspaceCheckboxList');
     var avg = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'avg');
 
-    cy.get(workspaceCheckboxList).find('label').contains(checkBoxName).parent('li').within(() => {
+    cy.get(checkboxListObject, { timeout: avg }).find('label').contains(checkBoxName).parent('li').within(() => {
         cy.get('input', { timeout: avg }).should('not.checked');
 
     });
@@ -245,6 +267,32 @@ function editText(fieldObject, text) {
 }
 
 
+/*
+ *  function to check language checkbox
+ *   @param {string} checkBoxName - the name of the checkbox to check
+ */
+function checkLanguageCheckbox(checkBoxName) {
+
+    //check we are in the language section
+
+    var languageCheckboxList = genericUtils.jsonFile('userModuleElements.json', 'languageScreen', 'languageCheckboxList');
+    _checkCheckboxes(languageCheckboxList, checkBoxName);
+
+
+}
+/*
+ *  function to uncheck language checkbox
+ *   @param {string} checkBoxName - the name of the checkbox to check
+ */
+function uncheckLanguageCheckbox(checkBoxName) {
+
+    //check we are in the language section
+
+    var languageCheckboxList = genericUtils.jsonFile('userModuleElements.json', 'languageScreen', 'languageCheckboxList');
+    _uncheckCheckboxes(languageCheckboxList, checkBoxName);
+
+
+}
 
 
 
@@ -262,7 +310,11 @@ module.exports = {
     waitForObject: waitForObject,
     selectRole: selectRole,
     selectUILocale: selectUILocale,
-    editText: editText
+    editText: editText,
+    _checkCheckboxes: _checkCheckboxes,
+    _uncheckCheckboxes: _uncheckCheckboxes,
+    checkLanguageCheckbox: checkLanguageCheckbox,
+    uncheckLanguageCheckbox: uncheckLanguageCheckbox
 
 };
 

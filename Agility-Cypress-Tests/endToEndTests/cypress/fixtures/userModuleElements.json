@@ -1,6 +1,5 @@
 {
-  "userScreen": 
-  {
+  "userScreen": {
     "userGadget": "#conf-UserGadget",
     "userGroup": "#us-group-selector",
     "userName": "#us-usr-selector",
@@ -21,8 +20,7 @@
     "allGadgets": "#conf-menu-buttons"
   },
 
-  "mainScreen": 
-  {
+  "mainScreen": {
     "loginNameLabel": ".us-left-col > :nth-child(1) > label",
     "userNameLabel": ".us-left-col > :nth-child(2) > label",
     "email": ".us-left-col > :nth-child(3) > label",
@@ -44,13 +42,11 @@
     "changePasswordWindow": "#agility-change-password > h1"
   },
 
-  "permissionScreen":
-  {
+  "permissionScreen": {
     "canEditWorkspaceCheckbox": "#us-permissions-canEditWorkspaces"
   },
 
-  "workspaceScreen": 
-  {
+  "workspaceScreen": {
     "workspaceSection": "#us-workspaces-tab-heading ",
     "defaultWorkspaceDropdown": "#us-default-workspace",
     "allWorkspaceCheckbox": "#us-workspaces-list>li>label",
@@ -59,8 +55,7 @@
     "workspaceCheckboxList": "#us-workspaces-list>li"
   },
 
-  "addUserScreen": 
-  {
+  "addUserScreen": {
     "userName": "#aud-user-name",
     "loginName": "#aud-login-name",
     "password": "#aud-password",
@@ -73,16 +68,14 @@
     "error": ".error",
     "closeErrorIcon": "#ws-dialog-page-content > div.ws-notification-box > p > span.mdi.mdi-close"
   },
-  
-  "disableUserScreen": 
-  {
-   "confirmationMsg": "#ws-confirm-dialog-message",
+
+  "disableUserScreen": {
+    "confirmationMsg": "#ws-confirm-dialog-message",
     "cancelButton": "#ws-dialog-cancel",
     "okButton": "#ws-dialog-submit"
   },
 
-  "userOptions":
-  {
+  "userOptions": {
     "actionMenu": "#conf-gadget-menu > span",
     "addNewUser": "#conf-atr-def-title-menuAddNewUser",
     "disableUser": "#conf-atr-def-title-menuDisableUser",
@@ -91,17 +84,24 @@
     "refresh": "#conf-atr-def-title-refresh",
     "help": "#conf-atr-def-title-help"
   },
-    
-  "re-enableUserScreen": 
-    {
-      "sortDropDown": "#rud-user-sort",
-      "allDisabledUserList": "#rud-disabled-user-list>li>label",
-      "cancelButton": "#ws-dialog-cancel",
-      "okButton": "#ws-dialog-submit"
-    }
 
+  "re-enableUserScreen": {
+    "sortDropDown": "#rud-user-sort",
+    "allDisabledUserList": "#rud-disabled-user-list>li>label",
+    "cancelButton": "#ws-dialog-cancel",
+    "okButton": "#ws-dialog-submit"
+  },
 
+  "languageScreen": {
 
-
+    "languageHeaderElement": "#us-languages-tab-heading",
+    "defaultLanguageDropdown": "#us-default-lang",
+    "allLanguageCheckbox": "#us-languages-list>li>label",
+    "applyButton": "#us-gadget-ok-btn",
+    "cancelButton": "#us-gadget-cancel-btn",
+    "languageCheckboxList": "#us-languages-list>li"
   }
+
+
+}
 

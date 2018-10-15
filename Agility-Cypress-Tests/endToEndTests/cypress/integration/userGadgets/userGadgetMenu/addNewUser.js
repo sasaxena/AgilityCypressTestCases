@@ -191,7 +191,7 @@ describe('User Gadget Menu Functionality', function () {
 
 
 
-    it('AMI:1906:51,AMI:1907:52 Enter an existing user name in add new user window and click ok, then error msg should be displayed and click on close icon of error message, and Click on User Group dropdown ,drop down should display all the user groups present along with created user in corresponding group', function () {
+    it('AMI:1906:51,AMI:1907:52,AMI:1908:53 Enter an existing user name in add new user window and click ok, then error msg should be displayed and click on close icon of error message, and Click on User Group dropdown ,drop down should display all the user groups present along with created user in corresponding group', function () {
         //Retrieving test data
         var userName = genericUtils.csvFile('userData.csv', 1, 0);
         var workspaceOption = genericUtils.csvFile('userData.csv', 1, 1);

@@ -1,14 +1,14 @@
 Username,WorkspacesOption,Gadgets,UserGroup,UserName,WorkspaceCheckboxes,Email_Id,password,Role,UI Locale,Language,sortOptions,Dummy
-cypress2,Configuration Options,Users,Admin Group/Admin Group,CypressTestUser2,Admin,1@2.FU,qcteam,Administrator,Bahasa Indonesia (Indonesia),English,,ajbjkascb
-cypress3,Create new workspace…,Users,Admin,CypressTestUser3,Agrex Example,abc@gmail.com,qc team,Standard,English (United Kingdom),,,ajbjkascb
-cypress13,Edit current workspace…,Users,Cypress UsersAdmin,admin_001,Configuration Options,abcd,,Viewer,,,,ajbjkascb
-,,,,admin2,CraigQA1,ad@gmail.com,,Supplier,,,,ajbjkascb
-,,,,Opal,Workspace Editor Doc,cypress15@gmail.com,,,,,,ajbjkascb
-,,,,CypressTestUser13,Craig QA General,cypress16@gmail.com,,,,,,ajbjkascb
-cypress14,,,,CypressTestUser14,Datasheet Gadget,,,,,,,ajbjkascb
-cypress15,,,,CypressTestUser15,Default,,,,,,,ajbjkascb
-cypress 16,,,,Cypress Test User16,Delete test,,,,,,,ajbjkascb
-,,,,,Error Space,,,,,,,ajbjkascb
+cypress2,Configuration Options,Users,Admin Group/Admin Group,CypressTestUser2,Admin,1@2.FU,qcteam,Administrator,Bahasa Indonesia (Indonesia),English,Login Name,ajbjkascb
+cypress3,Create new workspace…,Users,Admin,CypressTestUser3,Agrex Example,abc@gmail.com,qc team,Standard,English (United Kingdom),BG,User Name,ajbjkascb
+cypress13,Edit current workspace…,Users,Cypress UsersAdmin,admin_001,Configuration Options,abcd,,Viewer,,French,,ajbjkascb
+,,,,admin2,CraigQA1,ad@gmail.com,,Supplier,,Test Child Language,,ajbjkascb
+,,,,Opal,Workspace Editor Doc,cypress15@gmail.com,,,,Yorkshire,,ajbjkascb
+,,,,CypressTestUser13,Craig QA General,cypress16@gmail.com,,,,Estonian,,ajbjkascb
+cypress14,,,,CypressTestUser14,Datasheet Gadget,,,,,Korean,,ajbjkascb
+cypress15,,,,CypressTestUser15,Default,,,,,Ripon,,ajbjkascb
+cypress 16,,,,Cypress Test User16,Delete test,,,,,York,,ajbjkascb
+cypress11,,,,cypressTestUser11,Error Space,,,,,Canadian French,,ajbjkascb
 ,,,,,Extended Search,,,,,,,ajbjkascb
 ,,,,,adfag,,,,,,,ajbjkascb
 ,,,,,File Uploader,,,,,,,ajbjkascb
