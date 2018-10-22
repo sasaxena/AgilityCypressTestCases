@@ -1,40 +1,55 @@
 const loginUtils = require('../../../utils/loginUtils');
 const changeDropdownUtils = require('../../../utils/changeDropdownUtils');
 const genericUtils = require('../../../utils/genericUtils');
-const userUtils = require('../../../utils/userUtils');
-
 
 describe('User actions with Usergadgets section', function () {
     it('AMI:1857:2, Clicks on user group dropdown and validates list of user groups and blank space', function () {
 
-        // Login to AMI.
-        var userName = genericUtils.csvFile('userData.csv', 2, 0);
-        var userGroup = genericUtils.csvFile('userData.csv', 1, 3);
+        //Retrieving test data
+        var userName = genericUtils.csvFile('userData.csv', 'LoginName', 'value2');
+        var userGroup = genericUtils.csvFile('userData.csv', 'UserGroup', 'value1');
+        var workspaceOption = genericUtils.csvFile('userData.csv', 'WorkspacesOption', 'value1');
+        
+        //Retrieving elements
         var userGadget = genericUtils.jsonFile('userModuleElements.json', 'userScreen', 'userGadget');
         var timeout = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'min');
 
-
+        //Login to AMI.
         loginUtils.loginToAMI(userName);
-        // Clicks on user gadgets
+        cy.log('User Successfully logged in application');
+
+        //Selecting the Configuration Option in Workspace Dropdown
+        changeDropdownUtils.changeWorkspace(workspaceOption);
+        cy.log('User Successfully navigated to Configuration Options');
+
+        //Clicks on user gadgets
         cy.get(userGadget).click();
-        userUtils.waitForObject(timeout);
+        cy.wait(timeout);
+        cy.log('Clicked on user gadget');
+
         // Displaying values from the user group dropdown
         var userGroupList = genericUtils.jsonFile('userModuleElements.json', 'userScreen', 'userGroupList');
         cy.get(userGroupList).then((li) => {
             const allValues = li.text();
             cy.log(allValues);
         });
+
         //Selects User groups in user group dropdown
         changeDropdownUtils.userGroupSelection(userGroup);
-        userUtils.waitForObject(timeout);
+        cy.log('Selected usergroup value in dropdown');
+
+        cy.wait(timeout);
         loginUtils.logoutFromAMI();
-        userUtils.waitForObject(timeout);
+        cy.wait(timeout);
     });
     it('AMI:1856:1, Clicks on user group dropdown and validates Main,Groups,Languages,Workspaces,Attributes,Permissions,User Snapshot sections', function () {
 
-        // Login to AMI.
-        var userName = genericUtils.csvFile('userData.csv', 2, 0);
-        var userGroup = genericUtils.csvFile('userData.csv', 1, 3);
+        //Retrieving test data
+        var userName = genericUtils.csvFile('userData.csv', 'LoginName', 'value2');
+        var userGroup = genericUtils.csvFile('userData.csv', 'UserGroup', 'value1');
+        var workspaceOption = genericUtils.csvFile('userData.csv', 'WorkspacesOption', 'value1');
+
+        //Retrieving elements
         var userGadget = genericUtils.jsonFile('userModuleElements.json', 'userScreen', 'userGadget');
         var userNameD = genericUtils.jsonFile('userModuleElements.json', 'userScreen', 'userNameDropdown');
         var userGroupD = genericUtils.jsonFile('userModuleElements.json', 'userScreen', 'userGroupDropdown');
@@ -47,14 +62,27 @@ describe('User actions with Usergadgets section', function () {
         var userSnapshotSection = genericUtils.jsonFile('userModuleElements.json', 'userScreen', 'userSnapshotSection');
         var timeout = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'min');
 
-
+        // Login to AMI.
         loginUtils.loginToAMI(userName);
+        cy.log('User Successfully logged in application');
+
+        //Selecting the Configuration Option in Workspace Dropdown
+        changeDropdownUtils.changeWorkspace(workspaceOption);
+        cy.log('User Successfully navigated to Configuration Options');
+
+        //Clicks on user gadgets
         cy.get(userGadget).click();
-        userUtils.waitForObject(timeout);
+        cy.wait(timeout);
+        cy.log('Clicked on user gadget');
+
+        //Validating user group elements
         cy.get(userGroupD).should('be.visible');
         cy.log('User group section is validated successfully');
+
+        //Validating user name elements
         cy.get(userNameD).should('be.visible');
         cy.log('User name section is validated successfully');
+        
         //Selects User groups in user group dropdown
         changeDropdownUtils.userGroupSelection(userGroup);
         
@@ -81,36 +109,49 @@ describe('User actions with Usergadgets section', function () {
         
         cy.log('All the fields are validated successfully');
         loginUtils.logoutFromAMI();
-        userUtils.waitForObject(timeout);
+        cy.wait(timeout);
     });
  
     it('AMI:1858:3, Clicks on user name dropdown and validates user name for the selected user group', function () {
-        var userName = genericUtils.csvFile('userData.csv', 2, 0);
-        var userGroup = genericUtils.csvFile('userData.csv', 1, 3);
-        var user = genericUtils.csvFile('userData.csv', 2, 4);
+
+        //Retrieving test data
+        var userName = genericUtils.csvFile('userData.csv', 'LoginName', 'value2');
+        var userGroup = genericUtils.csvFile('userData.csv', 'UserGroup', 'value1');
+        var user = genericUtils.csvFile('userData.csv', 'UserName', 'value2');
+        var workspaceOption = genericUtils.csvFile('userData.csv', 'WorkspacesOption', 'value1');
+
+        //Retrieving elements
         var userGadget = genericUtils.jsonFile('userModuleElements.json', 'userScreen', 'userGadget');
         var userNameD = genericUtils.jsonFile('userModuleElements.json', 'userScreen', 'userNameDropdown');
         var userNameList = genericUtils.jsonFile('userModuleElements.json', 'userScreen', 'userNameList');
         var timeout = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'min');
 
-
-        // Login to AMI.
+        //Login to AMI.
         loginUtils.loginToAMI(userName);
+        cy.log('User Successfully logged in application');
+
+        //Selecting the Configuration Option in Workspace Dropdown
+        changeDropdownUtils.changeWorkspace(workspaceOption);
+        cy.log('User Successfully navigated to Configuration Options');
+
+        //Clicks on user gadgets
         cy.get(userGadget).click();
-        userUtils.waitForObject(timeout);
+        cy.wait(timeout);
+        cy.log('Clicked on user gadget');
+
         // Selects 'User groups' in user group dropdown.
         changeDropdownUtils.userGroupSelection(userGroup);
-        userUtils.waitForObject(timeout);
+        cy.wait(timeout);
         cy.get(userNameList).then((li) => {
             const allValues = li.text();
             cy.log(allValues);
         });
         cy.get(userNameD).should('be.visible');
-        cy.log('User group name down is visible');
+        cy.log('User group name dropdown is visible');
 
         changeDropdownUtils.selectUserName(user);
-        userUtils.waitForObject(timeout);
-        cy.log('user is present in user group');
+        cy.wait(timeout);
+        cy.log('User is present in user group');
 
         loginUtils.logoutFromAMI();
     });

@@ -3,14 +3,16 @@ const changeDropdownUtils = require('../../../utils/changeDropdownUtils');
 const genericUtils = require('../../../utils/genericUtils');
 const userUtils = require('../../../utils/userUtils');
 
-
 describe('User actions with changePasswordAtNextLogin field', function () {
     it('AMI:1879:24 click on changePasswordAtNextLogin checkbox and apply, it should ask for change passowrd in the next login with the specified user', function () {
 
-        var userName = genericUtils.csvFile('userData.csv', 2, 0);
-        var userGroup = genericUtils.csvFile('userData.csv', 1, 3);
-        var userName1 = genericUtils.csvFile('userData.csv', 3, 4);
+        //Retrieving test data
+        var userName = genericUtils.csvFile('userData.csv', 'LoginName', 'value2');
+        var userGroup = genericUtils.csvFile('userData.csv', 'UserGroup', 'value1');
+        var userName1 = genericUtils.csvFile('userData.csv', 'UserName', 'value3');
+        var workspaceOption = genericUtils.csvFile('userData.csv', 'WorkspacesOption', 'value1');
 
+        //Retrieving elements
         var userGadget = genericUtils.jsonFile('userModuleElements.json', 'userScreen', 'userGadget');
         var userGroupList = genericUtils.jsonFile('userModuleElements.json', 'userScreen', 'userGroupList');
         var mainSection = genericUtils.jsonFile('userModuleElements.json', 'userScreen', 'mainSection');
@@ -19,55 +21,65 @@ describe('User actions with changePasswordAtNextLogin field', function () {
         var gadgetOk = genericUtils.jsonFile('userModuleElements.json', 'mainScreen', 'gadgetOk');
         var timeout = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'min');
 
-        // Login to AMI.
+        //Login to AMI.
         loginUtils.loginToAMI(userName);
+        cy.log('User Successfully logged in application');
+
+        //Selecting the Configuration Option in Workspace Dropdown
+        changeDropdownUtils.changeWorkspace(workspaceOption);
+        cy.log('User Successfully navigated to Configuration Options');
 
         // Clicks on user gadgets
         cy.get(userGadget).click();
-        userUtils.waitForObject(timeout);
+        cy.wait(timeout);
+        cy.log('User clicked on User gadget');
 
-        // Displaying values from the user group dropdown
+        //Displaying values from the user group dropdown
         cy.get(userGroupList).then((li) => {
             const allValues = li.text();
             cy.log(allValues);
         });
 
-        // Selects 'User groups' in user group dropdown.
+        // Selects 'User group' in user group dropdown.
         changeDropdownUtils.userGroupSelection(userGroup);
-        userUtils.waitForObject(timeout);
-        userUtils.selectUserName(userName1);
-        userUtils.waitForObject(timeout);
+        cy.wait(timeout);
+        cy.log('User selected the userGroupName in Usergroup dropdown');
 
-        //checks for the main section visibility
+        // Selects 'User name' in user name dropdown.
+        userUtils.selectUserName(userName1);
+        cy.wait(timeout);
+        cy.log('User selected the userName in Username dropdown');
+
+        //Checks for the main section visibility
         cy.get(mainSection).should('be.visible');
         cy.log('Main section is validated successfully');
 
-        //validations of changePasswordAtNextLoginCheckBox in main view
+        //Validations of changePasswordAtNextLoginCheckBox in main view
         cy.get(changePasswordAtNextLoginCheckBox).should('be.visible');
         cy.get(changePasswordAtNextLoginCheckBox).should('not.checked');
-        cy.log('changePasswordAtNextLoginCheckBox field is validated for unchecked status successfully');
+        cy.log('ChangePasswordAtNextLoginCheckBox field is validated for unchecked status successfully');
 
-        //check the changePasswordAtNextLoginCheckBox filed
+        //Check the changePasswordAtNextLoginCheckBox field
         cy.get(changePasswordAtNextLoginCheckBox).check();
         cy.get(changePasswordAtNextLoginCheckBox).should('checked');
-        cy.log('checked the changePasswordAtNextLoginCheckBox field successfully');
+        cy.log('Checked the changePasswordAtNextLoginCheckBox field successfully');
 
-        //validation of cancel and apply buttons are enabled
+        //Validation of cancel and apply buttons are enabled
         cy.get(gadgetCancel).should('be.enabled');
         cy.get(gadgetOk).should('be.enabled');
-        cy.log('cancel and apply buttons are successfully enabled');
+        cy.log('Cancel and apply buttons are successfully enabled');
 
-        //click on cancel and check for unchanged loginName
+        //Click on cancel and check for unchanged loginName
         cy.get(gadgetOk).click();
-        userUtils.waitForObject(timeout);
+        cy.wait(timeout);
         cy.log('Clicked on apply button');
 
-        //validated the changePasswordAtNextLoginCheckBox after click on apply button
+        //Validated the changePasswordAtNextLoginCheckBox after click on apply button
         cy.get(changePasswordAtNextLoginCheckBox).should('checked');
 
         //Logout from the application
         loginUtils.logoutFromAMI();
-        userUtils.waitForObject(timeout);
+        cy.wait(timeout);
 
         //Relogin into application with specific user
         loginUtils.ReloginToAMI(userName1);
@@ -75,23 +87,25 @@ describe('User actions with changePasswordAtNextLogin field', function () {
 
         //Re-Initialize to the previous state for checkbox
         loginUtils.loginToAMI(userName);
+        changeDropdownUtils.changeWorkspace(workspaceOption);
+        cy.wait(timeout);
         cy.get(userGadget).click();
-        userUtils.waitForObject(timeout);
+        cy.wait(timeout);
         changeDropdownUtils.userGroupSelection(userGroup);
-        userUtils.waitForObject(timeout);
+        cy.wait(timeout);
         userUtils.selectUserName(userName1);
-        userUtils.waitForObject(timeout);
+        cy.wait(timeout);
         cy.get(mainSection).should('be.visible');
         cy.get(changePasswordAtNextLoginCheckBox).should('checked');
         cy.get(changePasswordAtNextLoginCheckBox).uncheck();
         cy.get(gadgetOk).click();
-        userUtils.waitForObject(timeout);
+        cy.wait(timeout);
         cy.log('Clicked on apply button');
         cy.get(changePasswordAtNextLoginCheckBox).should('not.checked');
         cy.log('Re-Initialized the changePasswordAtNextLogin checkbox to unchecked state');
 
         //Logout from the application
         loginUtils.logoutFromAMI();
-        userUtils.waitForObject(timeout);
+        cy.wait(timeout);
     });
 });

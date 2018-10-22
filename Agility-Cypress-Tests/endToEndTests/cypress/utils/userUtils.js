@@ -13,7 +13,7 @@ function selectGadget(gadgetName) {
 
     cy.get(userGadget, { timeout: avg }).then(() => {
         
-        waitForObject(timeOut);
+        cy.wait(timeOut);
         cy.get(userGadget, { timeout: avg }).should('exist');
         cy.get(allGadgets).find('button').contains(gadgetName).click();
     });
@@ -77,7 +77,7 @@ function _uncheckCheckboxes(checkboxListObject, checkBoxName) {
     var min = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'min');
     var avg = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'avg');
 
-    waitForObject(min);
+    cy.wait(min);
     cy.get(checkboxListObject, { timeout: avg }).find('label').contains(checkBoxName).parent('li').within(() => {
         cy.get('input', { timeout: avg }).uncheck();
     });
@@ -93,8 +93,6 @@ function checkWorkspaceCheckbox(checkBoxName) {
 
     var workspaceCheckboxList = genericUtils.jsonFile('userModuleElements.json', 'workspaceScreen', 'workspaceCheckboxList');
     _checkCheckboxes(workspaceCheckboxList, checkBoxName);
-    
-   
 }
 
 /*
@@ -107,7 +105,6 @@ function uncheckWorkspaceCheckbox(checkBoxName) {
 
     var workspaceCheckboxList = genericUtils.jsonFile('userModuleElements.json', 'workspaceScreen', 'workspaceCheckboxList');
     _uncheckCheckboxes(workspaceCheckboxList, checkBoxName);
-   
 }
 
 /*
@@ -117,7 +114,6 @@ function uncheckWorkspaceCheckbox(checkBoxName) {
 function validateCheckedCheckbox(checkboxListObject, checkBoxName) {
 
     //check we are in the workspace/Language section
-
     var avg = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'avg');
 
     cy.get(checkboxListObject).find('label').contains(checkBoxName).parent('li').within(() => {
@@ -132,18 +128,12 @@ function validateCheckedCheckbox(checkboxListObject, checkBoxName) {
 function validateUncheckCheckbox(checkboxListObject, checkBoxName) {
 
     //check we are in the workspace/Language section
-
     var avg = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'avg');
 
     cy.get(checkboxListObject, { timeout: avg }).find('label').contains(checkBoxName).parent('li').within(() => {
         cy.get('input', { timeout: avg }).should('not.checked');
 
     });
-}
-
-function waitForObject(timeOut) {
-    
-    cy.wait(timeOut);
 }
 
 /*
@@ -155,7 +145,6 @@ function waitForObject(timeOut) {
 function availableOptionInDropdown(dropDown, item) {
 
     // Allow 20 seconds to see all dropdown option.
-
     var avg = genericUtils.jsonFile('configEnvironment.json', 'timeout', 'avg');
 
     cy.get(dropDown, { timeout: avg }).within((selector) => {
@@ -172,8 +161,6 @@ function availableOptionInDropdown(dropDown, item) {
                         cy.log('true');
                     }
                 }
-
-
                 if (result === true) {
                     cy.log("Drpdown Option-" + item + "is present");
                 } else {
@@ -216,8 +203,6 @@ function unAvailableOptionInDropdown(dropDown, item) {
                         cy.log('true');
                     }
                 }
-
-
                 if (result === false) {
                     cy.log("Drpdown Option-" + item + "is not present");
 
@@ -278,7 +263,6 @@ function checkLanguageCheckbox(checkBoxName) {
     var languageCheckboxList = genericUtils.jsonFile('userModuleElements.json', 'languageScreen', 'languageCheckboxList');
     _checkCheckboxes(languageCheckboxList, checkBoxName);
 
-
 }
 /*
  *  function to uncheck language checkbox
@@ -291,11 +275,7 @@ function uncheckLanguageCheckbox(checkBoxName) {
     var languageCheckboxList = genericUtils.jsonFile('userModuleElements.json', 'languageScreen', 'languageCheckboxList');
     _uncheckCheckboxes(languageCheckboxList, checkBoxName);
 
-
 }
-
-
-
 
 module.exports = {
     selectGadget: selectGadget,
@@ -307,7 +287,6 @@ module.exports = {
     validateUncheckCheckbox: validateUncheckCheckbox,
     validateCheckedCheckbox: validateCheckedCheckbox,
     uncheckWorkspaceCheckbox: uncheckWorkspaceCheckbox,
-    waitForObject: waitForObject,
     selectRole: selectRole,
     selectUILocale: selectUILocale,
     editText: editText,

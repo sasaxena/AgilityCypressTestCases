@@ -93,15 +93,35 @@
   },
 
   "languageScreen": {
-
     "languageHeaderElement": "#us-languages-tab-heading",
     "defaultLanguageDropdown": "#us-default-lang",
     "allLanguageCheckbox": "#us-languages-list>li>label",
     "applyButton": "#us-gadget-ok-btn",
     "cancelButton": "#us-gadget-cancel-btn",
     "languageCheckboxList": "#us-languages-list>li"
+  },
+
+  "clipBoardScreen": {
+    "clipBoardheaderElement": "#ws-gadget-holder-ClipboardGadget > div.ui-widget.ui-widget-header.ws-gadget-title",
+    "previousIcon": "#cg-prev-btn>span",
+    "nextIcon": "#cg-next-btn > span",
+    "previewArea": "#cg-paginationText",
+    "actionMenu": "#Clipboard-menu-icon",
+    "actionMenuItemValues": ".ws-context-menu-title ui-menu-item-wrapper",
+    "objectElement": "[href = '#']",
+    "expandOption": "#arrow-cb_1559",
+    "copyOption": "[title='Copy']",
+    "eventsList": "div.clpbd-page>ul>li>a>span",
+    "electricalCheckbox": "#check-cb_1559-1335",
+    "cabinetHardwareCheckbox": "#check-cb_1559-1336",
+    "shopFittingAndStorage": "#check-cb_1559-1337",
+    "helpingHands": "#check-cb_1559-1338",
+    "staircase": "#check-cb_1559-1340",
+    "pageAndAddedObjectInfo": "#cg-paginationText"
+
+
+
   }
 
-
-}
+  }
 
